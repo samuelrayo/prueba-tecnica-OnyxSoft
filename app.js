@@ -2,9 +2,10 @@ import express from 'express'
 import { booksRouter } from './routes/booksRoutes.js'
 
 const app = express()
-app.use(express)
+app.use(express.json())
 
 app.disable('x-powered-by')
+
 
 app.use('/books', booksRouter)
 
