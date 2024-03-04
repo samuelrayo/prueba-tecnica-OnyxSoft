@@ -2,3 +2,5 @@
 **/node_modules
 #Package JSON
 **/package-lock.json
+#Eslint
+.eslintrc.cjs
