@@ -9,8 +9,8 @@ app.disable('x-powered-by')
 
 app.use('/books', booksRouter)
 
-const PORT = process.env.PORT ?? 8080
+const PORT = process.env.PORT ?? 4001
 
 app.listen(PORT, () => {
-    console.log(`Servidor escuchando en el puerto http://localhost:${PORT}`)
+    console.log(`Servidor escuchando en el puerto http://localhost:${ PORT }`)
 })

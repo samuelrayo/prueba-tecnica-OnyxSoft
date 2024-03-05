@@ -3,59 +3,59 @@ import { validateData, validatePartialData } from "../schema/booksSchema.js"
 
 
 const getAll = async (req, res) => {
-    try{
+    try {
         const books = await BooksModel.getAll()
-        res.json(books)
+        await res.json(books)
     }
-    catch(e){
+    catch (e) {
         throw new Error(e.message)
     }
 }
 
-const createBook = async(req, res) => {
-    try{
+const createBook = async (req, res) => {
+    try {
         const data = validateData(req.body)
 
-        if(!data.success){
-            return res.status(422).json({error: data.error})
+        if (!data.success) {
+            return res.status(422).json({ error: data.error })
         }
-        const newBook = await BooksModel.createBook({query: data.data})
-       res.status(201).json(newBook)
+        const newBook = await BooksModel.createBook({ query: data.data })
+        res.status(201).json(newBook)
     }
-    catch(e){
+    catch (e) {
         throw new Error(e.message)
     }
 }
 
-const updateBook = async(req, res) => {
-    try{
+const updateBook = async (req, res) => {
+    try {
         const data = validatePartialData(req.body)
-        
-        if (!data.success){
-            return res.status(400).json({ error: data.error})
+
+        if (!data.success) {
+            return res.status(400).json({ error: data.error })
         }
         const { id } = req.params
 
-        const updatedData = await BooksModel.updateBook({id, query: data.data})
-        
+        const updatedData = await BooksModel.updateBook({ id, query: data.data })
+
         return res.json(updatedData)
-    }   
-    catch(e){
+    }
+    catch (e) {
         throw new Error(e.message)
     }
 }
 
 const deleteBook = async (req, res) => {
-    try{
+    try {
         const { id } = req.params
-        const  deletedBook = await BooksModel.deleteBook({id})
+        const deletedBook = await BooksModel.deleteBook({ id })
 
-        if(deletedBook === false){
-            return res.status(404).json({error:`Este libro con el id ${id} no existe`})
+        if (deletedBook === false) {
+            return res.status(404).json({ error: `Este libro con el id ${ id } no existe` })
         }
         return res.json({ message: 'Libro  eliminado correctamente' })
-    }catch(e){
+    } catch (e) {
         throw new Error(e.message)
     }
 }
-export { getAll, createBook, updateBook, deleteBook}
+export { getAll, createBook, updateBook, deleteBook }

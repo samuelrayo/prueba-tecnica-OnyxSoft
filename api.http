@@ -1,8 +1,8 @@
 ### Recuperar todos los libros
-GET http://localhost:8080/books
+GET http://localhost:4001/books
 
 ### Crear un nuevo libro
-POST http://localhost:8080/books
+POST http://localhost:4001/books
 Content-Type: application/json
 
 {
@@ -13,11 +13,12 @@ Content-Type: application/json
     "image":"https://mentee.es/wp-content/uploads/2021/08/el-club-de-las-5-de-la-manana.png"
 }
 ### Actualizar  información de un libro
-PATCH  http://localhost:8080/books/d3e4f5g6-b7a8-c9d0-e1f2-a3b4c5d6e7f
+PATCH  http://localhost:4001/books/f47ac10b-58cc-4372-a567-0e02b2c3d479
 Content-Type: application/json
 
 {
-    "title": "La ciudad de los sueños"
+    "title": "El silencio",
+    "year": 2017
 }
 ### Eliminar un libro
-DELETE http://localhost:8080/books/d3e4f5g6-b7a8-c9d0-e1f2-a3b4c5d6e7f
+DELETE http://localhost:4001/books/d3e4f5g6-b7a8-c9d0-e1f2-a3b4c5d6e7f
