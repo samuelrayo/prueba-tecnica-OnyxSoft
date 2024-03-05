@@ -19,3 +19,5 @@ Content-Type: application/json
 {
     "title": "La ciudad de los sueños"
 }
+### Eliminar un libro
+DELETE http://localhost:8080/books/d3e4f5g6-b7a8-c9d0-e1f2-a3b4c5d6e7f

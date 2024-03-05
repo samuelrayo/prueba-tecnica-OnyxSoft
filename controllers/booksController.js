@@ -44,4 +44,18 @@ const updateBook = async(req, res) => {
         throw new Error(e.message)
     }
 }
-export { getAll, createBook, updateBook}
+
+const deleteBook = async (req, res) => {
+    try{
+        const { id } = req.params
+        const  deletedBook = await BooksModel.deleteBook({id})
+
+        if(deletedBook === false){
+            return res.status(404).json({error:`Este libro con el id ${id} no existe`})
+        }
+        return res.json({ message: 'Libro  eliminado correctamente' })
+    }catch(e){
+        throw new Error(e.message)
+    }
+}
+export { getAll, createBook, updateBook, deleteBook}

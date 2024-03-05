@@ -26,5 +26,10 @@ export class BooksModel {
         
         return books[findBook]
     }
+    static async deleteBook({id}){
+        const deletedBook = books.filter(book => book.id !== id)
+        
+        return deletedBook
+    }
 
 }
