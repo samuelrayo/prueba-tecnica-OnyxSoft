@@ -18,4 +18,13 @@ export class BooksModel {
         books.push(newBook)
         return newBook
     }
+    static async updateBook({id, query}){
+        const findBook = books.findIndex(book => book.id === id)
+        if (findBook === -1) return false
+
+        books[findBook] = {...books[findBook] , ...query}  
+        
+        return books[findBook]
+    }
+
 }

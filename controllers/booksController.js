@@ -1,5 +1,5 @@
 import { BooksModel } from "../models/books.js"
-import { validateData } from "../schema/booksSchema.js"
+import { validateData, validatePartialData } from "../schema/booksSchema.js"
 
 
 const getAll = async (req, res) => {
@@ -20,11 +20,28 @@ const createBook = async(req, res) => {
             return res.status(422).json({error: data.error})
         }
         const newBook = await BooksModel.createBook({query: data.data})
-        console.log(data.data)
        res.status(201).json(newBook)
     }
     catch(e){
         throw new Error(e.message)
     }
 }
-export { getAll, createBook }
+
+const updateBook = async(req, res) => {
+    try{
+        const data = validatePartialData(req.body)
+        
+        if (!data.success){
+            return res.status(400).json({ error: data.error})
+        }
+        const { id } = req.params
+
+        const updatedData = await BooksModel.updateBook({id, query: data.data})
+        
+        return res.json(updatedData)
+    }   
+    catch(e){
+        throw new Error(e.message)
+    }
+}
+export { getAll, createBook, updateBook}

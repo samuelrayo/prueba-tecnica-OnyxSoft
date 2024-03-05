@@ -1,7 +1,7 @@
 import { z }  from 'zod'
 
 const booksSchema = z.object({
-    title: z.string({required_error: 'El titulo es obligatorio'}).max(20, {message: 'Debe contener  menos de 20 caracteres.'}),
+    title: z.string({required_error: 'El titulo es obligatorio'}).max(40, {message: 'Debe contener  menos de 40 caracteres.'}),
     author: z.string({required_error: "El autor es obligatorio"}),
     year: z.number().int().max(2024),
     genre: z.enum(['Thriller', 'Ficción', 'Familiar', 'Biografía']),

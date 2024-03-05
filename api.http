@@ -12,3 +12,10 @@ Content-Type: application/json
     "genre": "Ficción",
     "image":"https://mentee.es/wp-content/uploads/2021/08/el-club-de-las-5-de-la-manana.png"
 }
+### Actualizar  información de un libro
+PATCH  http://localhost:8080/books/d3e4f5g6-b7a8-c9d0-e1f2-a3b4c5d6e7f
+Content-Type: application/json
+
+{
+    "title": "La ciudad de los sueños"
+}
