@@ -12,8 +12,10 @@ function App() {
 
         {books.map((book, key) => (
           <>
-
             <h1>{book.title}</h1>
+            <h4>{book.author}</h4>
+            <span>{book.year}</span>
+            <span>{book.genre}</span>
             <img src={book.image} alt="image book" key={key} />
           </>
         ))
