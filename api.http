@@ -1,3 +1,14 @@
 ### Recuperar todos los libros
-
 GET http://localhost:8080/books
+
+### Crear un nuevo libro
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+    "title": "El club de las 5am",
+    "author": "Robin Sharma",
+    "year": 2018,
+    "genre": "Ficción",
+    "image":"https://mentee.es/wp-content/uploads/2021/08/el-club-de-las-5-de-la-manana.png"
+}
