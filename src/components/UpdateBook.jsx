@@ -34,7 +34,7 @@ function UpdateBook({ bookId }) {
                 const responseData = await responsePost.json();
                 return responseData
             } else {
-                console.error('error !', responsePost.status);
+                console.error('error', responsePost.status);
             }
 
         }

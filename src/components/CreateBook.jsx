@@ -3,10 +3,10 @@ import { XIcon } from '../icons/icons';
 import CreatedOk from './CreatedOk'
 import { useState, useRef } from 'react'
 import { useContextCreate } from '../context/context'
+
 function CreateBook() {
     const [created, setCreated] = useState(false);
     const { setShowCreateBook } = useContextCreate()
-    const [error, setError] = useState({})
     const formRef = useRef(null)
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -21,8 +21,10 @@ function CreateBook() {
                 genre: dataForm.get('genre'),
                 image: dataForm.get('image')
             }
+
             const formStringify = JSON.stringify(typeOfData)
             if (formStringify === formRef.current) return
+
             const responsePost = await fetch('http://localhost:4001/books', {
                 method: 'POST',
                 headers: {
@@ -36,7 +38,7 @@ function CreateBook() {
                 setCreated(true)
                 return responseData
             } else {
-                console.error('ERRORORORORORO')
+                console.error(`No se ha podido crear, Error Code: ${ responsePost.status }`);
             }
 
         }
@@ -49,6 +51,7 @@ function CreateBook() {
     const handleClose = () => {
         setShowCreateBook(false)
     }
+
     return (
         <article className='article__form'>
             <div className="form__info" onClick={handleClose}>
@@ -56,19 +59,24 @@ function CreateBook() {
                 <XIcon />
             </div>
             <form action="/" method='POST' onSubmit={handleSubmit} className='form_container' ref={formRef}>
-                <label>Título:</label>
+                <label htmlFor="title">Título</label>
                 <input type="text" name='title' placeholder='De la brevedad de la vida' className='inputForm' />
 
-                <label>Autor:</label>
+                <label htmlFor="author">Autor:</label>
                 <input type="text" name='author' placeholder='Séneca' className='inputForm' />
 
-                <label>Año:</label>
+                <label htmlFor="year">Año</label>
                 <input type="number" name='year' placeholder='2014' className='inputForm' />
 
-                <label>Género:</label>
-                <input type="text" name='genre' placeholder='Familiar' className='inputForm' />
+                <label htmlFor="genre">Género</label>
+                <select name={'genre'} className='inputForm'>
+                    <option value="Ficción">Ficción</option>
+                    <option value="Familiar">Familiar</option>
+                    <option value="Biografía">Biografía</option>
+                    <option value="Thriller">Thriller</option>
+                </select>
 
-                <label>Imagen:</label>
+                <label htmlFor="image">Imagen</label>
                 <input type="text" name='image' placeholder='La url de tu imagen ;)' className='inputForm' />
 
                 <button type="submit" className='submitButton'>

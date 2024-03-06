@@ -23,7 +23,7 @@ function ListBooks() {
             if (result.ok) {
                 console.log('Eliminado', result)
             } else {
-                console.error('ERRORORORORORO')
+                console.error(`No se ha podido eliminar, Error Code: ${ result.status }`);
             }
         }
         catch (e) {
