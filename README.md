@@ -1,4 +1,4 @@
-# Mi Proyecto: API REST librería
+# Proyecto: API REST librería
 
 Se trata de una API REST de una librería realizada con React, Node y Express.js.
 
