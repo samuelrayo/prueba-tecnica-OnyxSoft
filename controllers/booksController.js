@@ -29,16 +29,19 @@ const createBook = async (req, res) => {
 
 const updateBook = async (req, res) => {
     try {
+        const { id } = req.params
         const data = validatePartialData(req.body)
 
         if (!data.success) {
             return res.status(400).json({ error: data.error })
         }
-        const { id } = req.params
-
         const updatedData = await BooksModel.updateBook({ id, query: data.data })
 
-        return res.json(updatedData)
+        if (updateBook === false) {
+            return res.status(404).json({ error: `Este libro con el id ${ id } no existe` })
+        }
+
+        return res.status(201).json(updatedData)
     }
     catch (e) {
         throw new Error(e.message)

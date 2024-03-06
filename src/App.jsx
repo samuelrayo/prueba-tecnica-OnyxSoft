@@ -17,7 +17,6 @@ function App() {
         {showCreateBook && <CreateBook />}
         {selectedBookId && <UpdateBook bookId={selectedBookId} />}
       </main>
-
     </>
   )
 }

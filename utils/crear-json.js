@@ -90,5 +90,4 @@ fs.writeFile('../booksList.json', jsonData, (err) => {
         console.error(err)
         return
     }
-    console.log('Archivo JSON creado')
 })

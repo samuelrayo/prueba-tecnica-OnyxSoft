@@ -16,6 +16,14 @@
         "image": "https://m.media-amazon.com/images/I/81e+mSqZvnL._AC_UF894,1000_QL80_.jpg"
     },
     {
+        "id": "e4eaa5e6-2e2a-4b0f-8e3a-3d4d2c1b479a",
+        "title": "Educated",
+        "author": "Tara Westover",
+        "year": "2018",
+        "genre": "Biografía",
+        "image": "https://m.media-amazon.com/images/I/71KCV+h6tzL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
         "id": "9e2f7d4c-5c5a-4b1f-8c6a-7a8b9c0d1e2f",
         "title": "Becoming",
         "author": "Michelle Obama",
@@ -62,5 +70,13 @@
         "year": "2019",
         "genre": "Familiar",
         "image": "https://images.cdn3.buscalibre.com/fit-in/360x360/08/00/080028dbc617fc94d4fa37f7b100a33f.jpg"
+    },
+    {
+        "id": "d3e4f5g6-b7a8-c9d0-e1f2-a3b4c5d6e7f",
+        "title": "City of Girls",
+        "author": "Elizabeth Gilbert",
+        "year": "2019",
+        "genre": "Ficción",
+        "image": "https://m.media-amazon.com/images/I/81PlTDfGcbL._AC_UF1000,1000_QL80_.jpg"
     }
 ]

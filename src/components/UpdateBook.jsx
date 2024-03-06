@@ -22,7 +22,7 @@ function UpdateBook({ bookId }) {
 
             const formStringify = JSON.stringify(typeOfData)
 
-            const responsePost = await fetch(`http://localhost:4001/books/${ bookId }}`, {
+            const responsePost = await fetch(`http://localhost:4001/books/${ bookId }`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',

@@ -30,12 +30,11 @@ function CreateBook() {
                 },
                 body: formStringify
             })
-            console.log(formStringify)
             if (responsePost.ok) {
                 formRef.current = formStringify
                 const responseData = await responsePost.json();
-                console.log('Respuesta del servidor:', responseData);
                 setCreated(true)
+                return responseData
             } else {
                 console.error('ERRORORORORORO')
             }
