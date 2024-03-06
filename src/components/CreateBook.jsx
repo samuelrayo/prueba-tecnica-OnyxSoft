@@ -1,12 +1,15 @@
 
+import { XIcon } from '../icons/icons';
 import CreatedOk from './CreatedOk'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { useContextCreate } from '../context/context'
 function CreateBook() {
     const [created, setCreated] = useState(false);
-
-
+    const { setShowCreateBook } = useContextCreate()
+    const formRef = useRef(null)
     const handleSubmit = async (e) => {
         e.preventDefault()
+
         try {
             const dataForm = new window.FormData(e.target)
             Object.fromEntries
@@ -18,6 +21,7 @@ function CreateBook() {
                 image: dataForm.get('image')
             }
             const formStringify = JSON.stringify(typeOfData)
+            if (formStringify === formRef.current) return
             const responsePost = await fetch('http://localhost:4001/books', {
                 method: 'POST',
                 headers: {
@@ -27,6 +31,7 @@ function CreateBook() {
             })
             console.log(formStringify)
             if (responsePost.ok) {
+                formRef.current = formStringify
                 const responseData = await responsePost.json();
                 console.log('Respuesta del servidor:', responseData);
                 setCreated(true)
@@ -39,19 +44,37 @@ function CreateBook() {
             console.error(error)
         }
     }
-    return (
-        <article>
-            CreateBook
-            <form action="/" method='POST' onSubmit={handleSubmit}>
-                <input type="text" name='title' placeholder='De la brevedad de la vida' />
-                <input type="text" name='author' placeholder='Séneca' />
-                <input type="number" name='year' placeholder='2014' />
-                <input type="text" name='genre' placeholder='Familiar' />
-                <input type="text" name='image' placeholder='La url de tu imagen ;)' />
 
-                <button type="submit">
+
+    const handleClose = () => {
+        setShowCreateBook(false)
+    }
+    return (
+        <article className='article__form'>
+            <div className="form__info" onClick={handleClose}>
+                CreateBook
+                <XIcon />
+            </div>
+            <form action="/" method='POST' onSubmit={handleSubmit} className='form_container' ref={formRef}>
+                <label>Título:</label>
+                <input type="text" name='title' placeholder='De la brevedad de la vida' className='inputForm' />
+
+                <label>Autor:</label>
+                <input type="text" name='author' placeholder='Séneca' className='inputForm' />
+
+                <label>Año:</label>
+                <input type="number" name='year' placeholder='2014' className='inputForm' />
+
+                <label>Género:</label>
+                <input type="text" name='genre' placeholder='Familiar' className='inputForm' />
+
+                <label>Imagen:</label>
+                <input type="text" name='image' placeholder='La url de tu imagen ;)' className='inputForm' />
+
+                <button type="submit" className='submitButton'>
                     Enviar!
                 </button>
+
             </form>
 
             {created && (<CreatedOk />)}

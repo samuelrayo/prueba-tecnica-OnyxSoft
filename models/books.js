@@ -1,5 +1,5 @@
 import { readBooks } from "../utils/utils.js"
-import { writeInToJSON } from '../utils/utils.js'
+import { writeInToJSONPost, writeInToJSON } from '../utils/utils.js'
 import crypto from 'node:crypto'
 
 
@@ -17,8 +17,8 @@ export class BooksModel {
             id: crypto.randomUUID(),
             ...query
         }
-        await books.push(newBook)
-        await writeInToJSON(newBook)
+        /*         await books.push(newBook) */
+        await writeInToJSONPost(newBook)
         return newBook
     }
     static async updateBook({ id, query }) {
@@ -31,9 +31,11 @@ export class BooksModel {
         return books[findBook]
     }
     static async deleteBook({ id }) {
-        const deletedBook = books.filter(book => book.id !== id)
-        writeInToJSON(deletedBook)
-        return deletedBook
+        const deletedBook = books.findIndex(book => book.id === id)
+        if (deletedBook === -1) return false
+        books.splice(deletedBook, 1)
+        writeInToJSON(books)
+        return books
     }
 
 }

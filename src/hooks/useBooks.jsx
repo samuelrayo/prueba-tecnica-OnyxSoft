@@ -14,7 +14,7 @@ function useBooks() {
             })
             .catch(error => console.error(error))
 
-    }, [])
+    }, [books])
     return {
         books
     }

@@ -16,7 +16,7 @@ const require = createRequire(import.meta.url)
 export const readBooks = (file) => require(file)
 
 
-export const writeInToJSON = async (data) => {
+export const writeInToJSONPost = async (data) => {
     try {
         const oldData = await readBooks(filePath)
         const allData = [...oldData, data]
@@ -30,4 +30,16 @@ export const writeInToJSON = async (data) => {
         console.error(error)
     }
 
+}
+
+export const writeInToJSON = async (data) => {
+    try {
+        fs.writeFile(filePath, JSON.stringify(data), (err) => {
+            if (err) {
+                console.error('Error en la escritura')
+            }
+        })
+    } catch (error) {
+        console.error(error)
+    }
 }

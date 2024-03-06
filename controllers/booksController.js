@@ -53,7 +53,7 @@ const deleteBook = async (req, res) => {
         if (deletedBook === false) {
             return res.status(404).json({ error: `Este libro con el id ${ id } no existe` })
         }
-        return res.json({ message: 'Libro  eliminado correctamente' })
+        return res.status(201).json(deletedBook)
     } catch (e) {
         throw new Error(e.message)
     }
