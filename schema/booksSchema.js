@@ -1,19 +1,18 @@
-import { z }  from 'zod'
+import { z } from 'zod'
 
 const booksSchema = z.object({
-    title: z.string({required_error: 'El titulo es obligatorio'}).max(60, {message: 'Debe contener  menos de 60 caracteres.'}),
-    author: z.string({required_error: "El autor es obligatorio"}).max(40, {message: 'El nombre del autor debe ser menor de 40 caracteres '}),
-    year: z.number().int().max(2024),
+    title: z.string({ required_error: 'El titulo es obligatorio' }).max(60, { message: 'Debe contener  menos de 60 caracteres.' }),
+    author: z.string({ required_error: "El autor es obligatorio" }).max(40, { message: 'El nombre del autor debe ser menor de 40 caracteres ' }),
+    year: z.number().int().min(1000).max(2024),
     genre: z.enum(['Thriller', 'Ficción', 'Familiar', 'Biografía']),
-    image: z.string().url({ message: 'La imagen debe ser una url válida'})
-    .optional()
+    image: z.string().url({ message: 'La imagen debe ser una url válida' })
 })
 
 
-export function validateData(data){
+export function validateData(data) {
     return booksSchema.safeParse(data)
 }
 
-export function validatePartialData(data){
+export function validatePartialData(data) {
     return booksSchema.partial().safeParse(data)
 }

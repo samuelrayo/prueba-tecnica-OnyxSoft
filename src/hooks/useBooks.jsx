@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 
 function useBooks() {
     const [books, setBooks] = useState([])
+
     useEffect(() => {
         if (!books) return
 
@@ -12,6 +13,7 @@ function useBooks() {
                 setBooks(data)
             })
             .catch(error => console.error(error))
+
     }, [])
     return {
         books
