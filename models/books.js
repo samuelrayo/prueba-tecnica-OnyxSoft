@@ -25,10 +25,10 @@ export class BooksModel {
         const findBook = books.findIndex(book => book.id === id)
         if (findBook === -1) return false
 
-        const booksUpdated = books[findBook] = { ...books[findBook], ...query }
-        console.log(books[findBook])
-        writeInToJSON(booksUpdated)
-        return books[findBook]
+        const bookUpdated = books[findBook] = { ...books[findBook], ...query }
+        writeInToJSON(books)
+        console.log(bookUpdated)
+        return bookUpdated
     }
     static async deleteBook({ id }) {
         const deletedBook = books.findIndex(book => book.id === id)

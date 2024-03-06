@@ -10,9 +10,10 @@ export const useContextCreate = () => {
 
 export const ContextProvider = ({ children }) => {
     const [showCreateBook, setShowCreateBook] = useState(false)
+    const [selectedBookId, setSelectedBookId] = useState(null);
 
     return (
-        <BooksContext.Provider value={{ showCreateBook, setShowCreateBook }}>
+        <BooksContext.Provider value={{ showCreateBook, setShowCreateBook, selectedBookId, setSelectedBookId }}>
             {children}
         </BooksContext.Provider>
     );

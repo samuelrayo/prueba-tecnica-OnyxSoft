@@ -9,6 +9,7 @@ function LandBook() {
                         OnyxSoft
                     </span>
                 </h3>
+                <p> Cada libro es un portal hacia el futuro del desarrollo de software.</p>
             </div>
         </section>
     )

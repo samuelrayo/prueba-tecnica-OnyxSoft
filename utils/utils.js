@@ -9,7 +9,6 @@ const __dirname = dirname(__filename);
 
 const filePath = path.join(__dirname, '../booksList.json');
 
-console.log('Ruta del archivo:', filePath);
 
 const require = createRequire(import.meta.url)
 

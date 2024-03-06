@@ -6,6 +6,7 @@ import { useContextCreate } from '../context/context'
 function CreateBook() {
     const [created, setCreated] = useState(false);
     const { setShowCreateBook } = useContextCreate()
+    const [error, setError] = useState({})
     const formRef = useRef(null)
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -52,7 +53,7 @@ function CreateBook() {
     return (
         <article className='article__form'>
             <div className="form__info" onClick={handleClose}>
-                CreateBook
+                Crear libro
                 <XIcon />
             </div>
             <form action="/" method='POST' onSubmit={handleSubmit} className='form_container' ref={formRef}>

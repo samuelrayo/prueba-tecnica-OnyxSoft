@@ -2,13 +2,17 @@
 import useBooks from '../hooks/useBooks'
 
 import { useContextCreate } from '../context/context'
-import { AddIcon, XIcon } from '../icons/icons'
+import { AddIcon, UpdateIcon, XIcon } from '../icons/icons'
 function ListBooks() {
     const { books } = useBooks()
-    const { setShowCreateBook } = useContextCreate()
+    const { setShowCreateBook, setSelectedBookId } = useContextCreate()
 
     const handlePlus = () => {
         setShowCreateBook(true)
+    }
+
+    const handleUpdate = async (id) => {
+        setSelectedBookId(id)
     }
 
     const handleX = async (id) => {
@@ -47,6 +51,9 @@ function ListBooks() {
                                 <div className="container__icon" onClick={() => handleX(book.id)}>
                                     <XIcon />
                                 </div>
+                                <div className='container__icon-update' onClick={() => handleUpdate(book.id)}>
+                                    <UpdateIcon />
+                                </div>
                             </div>
 
                         </li>
@@ -61,5 +68,6 @@ function ListBooks() {
         </section>
     )
 }
+
 
 export default ListBooks

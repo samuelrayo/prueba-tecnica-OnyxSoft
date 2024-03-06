@@ -24,6 +24,7 @@ body{
   background-color: #ffffff84;
   border-radius: 20px;
   text-align: center;
+  font-size: 22px;
 }
 .section__landbook-text h3{
   font-size: 70px;  
@@ -33,7 +34,10 @@ body{
 .section__landbook-text span{
   color: #4266f7;
 }
-
+.section__landbook-text p{
+  color: #ad4646;
+  text-decoration: underline;
+}
 .bookLi{
   display: flex;
   justify-content: center;
@@ -104,7 +108,7 @@ body{
 }
 
 .container__image:hover{
-  border: 3px dashed #000000;
+  border: 3px dashed #6b6b6b;
   transform: scale(1.3);
   transition: all 0.2s ease-in;
 }
@@ -121,12 +125,18 @@ body{
   top: 0;
   right: 0;
 }
+.container__icon-update{
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .container__text{
   text-align: center;
 }
 
 .title{
-    color: #0033ff;
+    color: #0033ffc4;
     padding: 5px;
     border-radius: 20px;
     font-size: 23px;
@@ -146,13 +156,13 @@ body{
   color: #0033fd;
 }
 .icon__plus{
-  position: absolute;
-  top: 20px;
-  right: -25px;
-  background-color: #000;
   border-radius: 10px;
   cursor: pointer;
+  background-color: #000;
   transition: background-color 0.8s ease;
+  position: absolute;
+  top: 0px;
+  right: -20px;
 }
 
 .icon__plus:hover{
@@ -160,10 +170,17 @@ body{
   transition: background-color 0.3s ease;
 }
 
+
+.icon__update:hover{
+  background-color: #0033ff;
+  transition: background-color 0.3s ease;
+}
+
+
 .article__form{
   position: absolute;
   z-index: 50;
-  top: 40%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #000;
