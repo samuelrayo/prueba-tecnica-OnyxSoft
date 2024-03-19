@@ -7,10 +7,15 @@ import crypto from 'node:crypto'
 const books = readBooks('../booksList.json')
 
 export class BooksModel {
-    static async getAll() {
+    static async getAll({ genre }) {
+
+        if (genre) {
+            const filterByGenre = books.filter(book => book.genre === genre)
+            return filterByGenre
+        }
+
         const data = await books
         return data
-
     }
     static async createBook({ query }) {
         const newBook = {
@@ -35,6 +40,10 @@ export class BooksModel {
         books.splice(deletedBook, 1)
         await writeInToJSON(books)
         return books
+    }
+
+    static async getByGenre({ query }) {
+
     }
 
 }

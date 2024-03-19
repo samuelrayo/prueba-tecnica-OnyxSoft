@@ -22,3 +22,16 @@ Content-Type: application/json
 }
 ### Eliminar un libro
 DELETE http://localhost:4001/books/d3e4f5g6-b7a8-c9d0-e1f2-a3b4c5d6e7f
+
+
+
+### Filtrar por genero
+
+###Familiar
+GET http://localhost:4001/books/?genre=Familiar
+
+###Thriller
+GET http://localhost:4001/books?genre=Thriller
+
+###Ficción
+GET http://localhost:4001/books?genre=Ficción

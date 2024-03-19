@@ -4,13 +4,22 @@ import { validateData, validatePartialData } from "../schema/booksSchema.js"
 
 const getAll = async (req, res) => {
     try {
-        const books = await BooksModel.getAll()
-        await res.json(books)
-    }
-    catch (e) {
-        throw new Error(e.message)
+        const { genre } = req.query;
+        if (genre) {
+            const genreBooks = await BooksModel.getAll({ genre });
+            if (genreBooks.length === 0) {
+                return res.status(404).json({ Error: `No se encontraron libros para el género "${ genre }"` });
+            }
+            return res.status(200).json(genreBooks);
+        } else {
+            const books = await BooksModel.getAll();
+            return res.status(200).json(books);
+        }
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 }
+
 
 const createBook = async (req, res) => {
     try {
@@ -61,4 +70,20 @@ const deleteBook = async (req, res) => {
         throw new Error(e.message)
     }
 }
+
+
+/* const getByGenre = async (req, res) => {
+    try {
+        const { genre } = req.query
+        const genreBooks = await BooksModel.getByGenre({ genre })
+        if (genreBooks.length === 0) {
+            return res.status(404).json({ Error: `El genero ${ genre } no coincide` })
+        }
+
+        return res.status(201).json(genre)
+
+    } catch (e) {
+        throw new Error(console.error(e))
+    }
+} */
 export { getAll, createBook, updateBook, deleteBook }
