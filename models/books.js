@@ -7,11 +7,16 @@ import crypto from 'node:crypto'
 const books = readBooks('../booksList.json')
 
 export class BooksModel {
-    static async getAll({ genre }) {
+    static async getAll({ genre, year }) {
 
         if (genre) {
             const filterByGenre = books.filter(book => book.genre === genre)
             return filterByGenre
+        } else if (year) {
+            const [startYear, endYear] = year.split('-').map(Number)
+            const filteredByYear = books.filter(book => book.year >= startYear && book.year <= endYear)
+
+            return filteredByYear
         }
 
         const data = await books
@@ -42,8 +47,5 @@ export class BooksModel {
         return books
     }
 
-    static async getByGenre({ query }) {
-
-    }
 
 }

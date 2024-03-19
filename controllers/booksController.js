@@ -4,14 +4,18 @@ import { validateData, validatePartialData } from "../schema/booksSchema.js"
 
 const getAll = async (req, res) => {
     try {
-        const { genre } = req.query;
+        const { genre, year } = req.query;
         if (genre) {
             const genreBooks = await BooksModel.getAll({ genre });
             if (genreBooks.length === 0) {
                 return res.status(404).json({ Error: `No se encontraron libros para el género "${ genre }"` });
             }
             return res.status(200).json(genreBooks);
-        } else {
+        } else if (year) {
+            const filteredByYear = await BooksModel.getAll({ year })
+            return res.status(200).json(filteredByYear)
+        }
+        else {
             const books = await BooksModel.getAll();
             return res.status(200).json(books);
         }

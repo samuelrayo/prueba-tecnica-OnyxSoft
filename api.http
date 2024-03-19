@@ -35,3 +35,7 @@ GET http://localhost:4001/books?genre=Thriller
 
 ###Ficción
 GET http://localhost:4001/books?genre=Ficción
+
+
+### Rango de año 
+GET http://localhost:4001/books?year=1990-2010
